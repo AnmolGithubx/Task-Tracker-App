@@ -1,0 +1,165 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f7f6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    padding: 20px;
+}
+
+.task-container {
+    background-color: white;
+    padding: 40px 30px; /* Increased padding for more space */
+    border-radius: 12px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    width: 450px; /* Increased width */
+    text-align: center;
+    overflow: hidden;
+}
+
+h1 {
+    font-size: 2.5em; /* Increased font size for the header */
+    margin-bottom: 20px;
+    color: #6b3a51;
+}
+
+input {
+    width: 100%;
+    padding: 15px;
+    margin-bottom: 20px; /* Increased bottom margin */
+    font-size: 18px; /* Increased font size */
+    border: 2px solid #ddd;
+    border-radius: 6px;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+input:focus {
+    border-color: #6b3a51;
+}
+
+button {
+    width: 100%;
+    padding: 15px;
+    margin-bottom: 20px; /* Increased bottom margin */
+    background-color: #6b3a51;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 18px; /* Increased font size */
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #5a2a41;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+    overflow-y: auto;
+    max-height: 350px; /* Increased max height */
+    margin-top: 20px; /* Added margin for spacing */
+}
+
+li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 15px 0; /* Increased margin between tasks */
+    font-size: 18px;
+    padding: 15px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    opacity: 0;
+    animation: fadeIn 0.5s forwards;
+    position: relative; /* For button positioning */
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+li.completed {
+    background-color: #e0e0e0;
+    text-decoration: line-through;
+    color: #888;
+    animation: slideComplete 0.5s ease-out;
+}
+
+@keyframes slideComplete {
+    0% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+    100% {
+        transform: translateX(20px);
+        opacity: 0.7;
+    }
+}
+
+li button {
+    padding: 8px 15px; /* Adjusted padding for buttons */
+    border-radius: 6px;
+    font-size: 16px; /* Adjusted font size */
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-left: 10px; /* Added margin between buttons */
+}
+
+button.complete-btn {
+    background-color: #4caf50;
+    min-width: 90px; /* Increased button width */
+}
+
+button.complete-btn:hover {
+    background-color: #45a049;
+}
+
+button.delete-btn {
+    background-color: #ff4d4d;
+    min-width: 90px; /* Increased button width */
+}
+
+button.delete-btn:hover {
+    background-color: #e60000;
+}
+
+/* Animation for deleting tasks */
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+}
+
+li.deleted {
+    animation: fadeOut 0.5s forwards;
+}
+
+.task-description {
+    flex: 1;
+    text-align: left;
+    margin-right: 20px; /* Added space between text and buttons */
+}
